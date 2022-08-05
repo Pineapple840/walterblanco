@@ -21,12 +21,20 @@ class Info():
         if int(atom) <= 2:
             inshell = 0
             period = 1
+            splitshell = ''
         elif atom <= 10:
             inshell = 2
             period = 2
+            splitshell = '2'
         elif atom <= 18:
-            inshell = 8
+            inshell = 10
             period = 3
+            splitshell = '2,8'
+        elif atom <= 36:
+            inshell = 18
+            period = 4
+            splitshell = '2,8,8'
+
 
 
         
@@ -43,7 +51,7 @@ It can also be written as *{symbol}*
   
 #Electrons
  
-{name} has {atom} electrons and {atom - inshell} of those are on its outer shell.
+{name} has {atom} electrons and {atom - inshell} of those are on its outer shell ({splitshell},{atom - inshell}).
 
 #Position
  
@@ -59,13 +67,20 @@ with open('elements.csv',newline = '') as read_obj:
 
 while Kill == False:
     try:
-        num = int(input('What element would you like to learn about (type a number learn about the element. type "0" to exit)\n'))
-    except ValueError:
-        print('Type a number dumbass')
+        try:
+            num = int(input('What element would you like to learn about (type an integer to learn about the element. type "0" to exit)\n'))
+        except IndexError:
+            num = -1
+            print('I have not got that far yet')
+        except ValueError:
+            num = -1
+            print('Type an integer dumbass')
+        if num == 0:
+            Kill = True
+        elif num == -1:
+            pass
+        else:
+            element = Info(int(list_of_csv[num][0]),list_of_csv[num][1],int(list_of_csv[num][2]),list_of_csv[num][3],list_of_csv[num][4])
+    except IndexError:
         num = -1
-    if num == 0:
-        Kill = True
-    elif num == -1:
-        pass
-    else:
-        element = Info(int(list_of_csv[num][0]),list_of_csv[num][1],int(list_of_csv[num][2]),list_of_csv[num][3],list_of_csv[num][4])
+        print('I have not got that far yet')

@@ -1,3 +1,4 @@
+Atomic number,Element name,Mass number,Type
 1,Hydrogen,1,H,other nonmetal
 2,Helium,4,He,noble gas
 3,Lithium,7,Li,alkali metal
@@ -8,3 +9,11 @@
 8,Oxygen,16,O,other nonmetal
 9,Fluorine,19,F,halogen
 10,Neon,20,Ne,noble gas
+11,Sodium,23,Na,alkali metal
+12,Magnesium,24,Mg,alkaline earth metal
+13,Aluminium,27,Al,post-transition metal
+14,Silicon,28,Si,Metalloid
+15,Phosphorus,31,P,other nonmetal
+16,Sulfur,32,S,other nonmetal
+17,Chlorine,35.5,Cl,halogen
+18,Argon,40,Ar,noble gas
