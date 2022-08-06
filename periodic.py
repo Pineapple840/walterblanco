@@ -2,6 +2,9 @@ import csv
 import os
 
 class Info():
+
+
+    
     def __init__(self, atom, name, mass, symbol, classification):
         self.atom = atom
         self.name = name
@@ -22,40 +25,56 @@ class Info():
             inshell = 0
             period = 1
             splitshell = ''
-        elif atom <= 10:
+        elif int(atom) <= 10:
             inshell = 2
             period = 2
-            splitshell = '2'
-        elif atom <= 18:
+            splitshell = '2,'
+        elif int(atom) <= 18:
             inshell = 10
             period = 3
-            splitshell = '2,8'
-        elif atom <= 36:
+            splitshell = '2,8,'
+        elif int(atom) <= 36:
             inshell = 18
             period = 4
-            splitshell = '2,8,8'
+            splitshell = '2,8,8,'
+
+        self.period = period
+        self.splitshell = splitshell
+        self.inshell = inshell
+
+        print(f'''\nThe {self.atom}{sussex} in the periodic table is {self.name}.
+
+It can also be written as *{self.symbol}*''')
 
 
+        self.furthermore()
 
+    def furthermore(self):
+        print('d')
+        choice = input(f'''Input:
+1 - Learn about it's structure
+2 - Learn about the {self.classification}s
+0 - Go back\n''')
+
+        if choice == '0':
+            pass
+        elif choice == '1':
+            self.info_structure()
+        elif choice == '2':
+            self.info_classification()
+        else:
+            print('I gave you a literal list of your choices you absolute set 8')
         
+    def info_structure(self):
 
-        print(f'''\nThe {atom}{sussex} in the periodic table is {name}.
-
-#Symbol
-
-It can also be written as *{symbol}*
-
-#Mass
-
-{name} is made of {atom} protons and {mass - atom} neutrons adding up to a relative atomic mass of {mass}.
-  
-#Electrons
+        print(f'''{self.name} is made of {self.atom} protons and a mean of {self.mass - self.atom} neutrons adding up to a relative atomic mass of {self.mass}.
  
-{name} has {atom} electrons and {atom - inshell} of those are on its outer shell ({splitshell},{atom - inshell}).
+{self.name} has {self.atom} electrons in {self.period} shells ({self.splitshell}{self.atom - self.inshell}).\n''')
 
-#Position
- 
-{name} is on row {period} and is classed as a {classification}\n''')
+    def info_classification():
+        pass
+    
+
 
 Kill = False
 
